@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Imprimir Producto</title>
+  <link rel="stylesheet" href="estilosimprim.css">
+</head>
+<body>
+  <h2>Información del Producto</h2>
+  <div id="infoProducto"></div>
+  <br>
+  <button onclick="window.print()">🖨️ Imprimir</button>
+<button class="no-print" onclick="window.location.href='producto.html'">🏠 Salir</button>
+  <script>
+    const producto = JSON.parse(localStorage.getItem("producto"));
+    let html = "<ul>";
+    html += `<li>Descripción: ${producto.descripcion}</li>`;
+    html += `<li>Precio: ${producto.precio}</li>`;
+    html += `<li>Cantidad: ${producto.cantidad}</li>`;
+    html += `<li>Proveedor: ${producto.proveedor}</li>`;
+    html += `<li>Unidad: ${producto.unidad}</li>`;
+    html += "</ul>";
+    document.getElementById("infoProducto").innerHTML = html;
+  </script>
+</body>
+</html>

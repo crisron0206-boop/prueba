@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado Producto</title>
+  <link rel="stylesheet" href="estilosPac.css">
+</head>
+<body>
+  <h2>Datos del Producto</h2>
+  <div id="resultado"></div>
+  <br>
+  <button onclick="window.location.href='imprimirproduc.html'">🖨️ Imprimir</button>
+  <script>
+    const producto = JSON.parse(localStorage.getItem("producto"));
+    let html = "<ul>";
+    html += `<li>Descripción: ${producto.descripcion} (String)</li>`;
+    html += `<li>Precio: ${producto.precio} (Double)</li>`;
+    html += `<li>Cantidad: ${producto.cantidad} (Int)</li>`;
+    html += `<li>Proveedor: ${producto.proveedor} (String)</li>`;
+    html += `<li>Unidad: ${producto.unidad} (String)</li>`;
+    html += "</ul>";
+    document.getElementById("resultado").innerHTML = html;
+  </script>
+</body>
+</html>

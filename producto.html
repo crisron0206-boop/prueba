@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario Producto</title>
+  <link rel="stylesheet" href="estilosPac.css">
+</head>
+<body>
+  <h2>Registro de Producto</h2>
+  <form id="productoForm">
+    <label>Descripción:</label>
+    <input type="text" name="descripcion" required><br>
+
+    <label>Precio:</label>
+    <input type="number" name="precio" step="0.01" required><br>
+
+    <label>Cantidad en existencia:</label>
+    <input type="number" name="cantidad" required><br>
+
+    <label>Proveedor:</label>
+    <input type="text" name="proveedor" required><br>
+
+    <label>Unidad de medida:</label>
+    <select name="unidad" required>
+      <option value="Pieza">Pieza</option>
+      <option value="Metro">Metro</option>
+      <option value="Litro">Litro</option>
+      <option value="Caja">Caja</option>
+      <option value="Kilogramo">Kilogramo</option>
+    </select><br>
+
+    <button type="submit">Guardar</button>
+  </form>
+
+  <script>
+    document.getElementById("productoForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const formData = new FormData(this);
+      const producto = {};
+      formData.forEach((valor, clave) => {
+        producto[clave] = valor;
+      });
+      localStorage.setItem("producto", JSON.stringify(producto));
+      window.location.href = "mostrarproducto.html";
+    });
+  </script>
+</body>
+</html>
